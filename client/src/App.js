@@ -13,7 +13,7 @@ function App() {
           {/*chart*/}
           <Graph></Graph>
           {/*form*/}
-
+          
         </div>
       </div>
     </div>
