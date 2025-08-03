@@ -1,5 +1,6 @@
 import './App.css';
 import Graph from './components/Graph';
+import Form from './components/Form'
 
 
 function App() {
@@ -9,11 +10,11 @@ function App() {
         <h1 className="text-4xl py-8 mb-10 bg-slate-800 text-white rounded">Expense Tracker</h1>
 
         {/*grid columns*/}
-        <div className="grid md:grid-cols2 gap-4">
+        <div className="grid md:grid-cols-2 gap-4">
           {/*chart*/}
           <Graph></Graph>
           {/*form*/}
-          
+          <Form></Form>
         </div>
       </div>
     </div>
