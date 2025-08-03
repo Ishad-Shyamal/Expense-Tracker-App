@@ -9,9 +9,24 @@ const Port = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 
+//mongodb connection
+const con = require('./db/connection');
+
 //using routes
 app.use(require('./routes/route'));
 
-app.listen(Port, () => {
+con.then(db => {
+    if(!db) return process.exit(1);
+
+    //listen to the http server
+    app.listen(Port, () => {
     console.log(`Server is running on http://localhost:${Port} Port`)
 })
+
+app.on('error', err => console.log(`Failed to connect with http server ${error}`));
+
+//error in mongodb connection
+}).catch(error => {
+    console.log(`Connection Failed...!${error}`);
+});
+
