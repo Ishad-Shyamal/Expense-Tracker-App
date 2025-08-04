@@ -1,4 +1,4 @@
-const mongoose = requie('mongoose');
+const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 //categories => field => ['type', 'color']
@@ -12,14 +12,15 @@ const transaction_model = new Schema({
     name: {type: String, default: "Anonymous"},
     type: {type: String, default: "Select a Transaction Type"}, 
     amount: {type: Number},
-    date: {type: date, default: date.now}
+    date: {type: Date, default: Date.now}
 })
 
-mongoose.model('categories', categories_model)
-mongoose.model('transaction', transaction_model);
+// Create models and assign to variables
+const Categories = mongoose.model('categories', categories_model)
+const Transaction = mongoose.model('transaction', transaction_model);
 
 exports.default = transaction_model;
 module.exports = {
     Categories,
     Transaction
-}
+};
