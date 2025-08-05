@@ -29,7 +29,7 @@
   background-color: var(--color-purple);
 }
 
-.chart.title{
+.chart .title{
   position:absolute;
   left: 0;
   right: 0;
