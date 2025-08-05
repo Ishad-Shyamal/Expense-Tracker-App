@@ -12,6 +12,7 @@ routes.route('/api/transaction')
     .get(controller.get_Transaction)
     .delete(controller.delete_Transaction)
 
+//Label Endpoints
 routes.route('/api/labels')
     .get(controller.get_Labels)
 
