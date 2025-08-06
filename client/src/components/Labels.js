@@ -1,9 +1,10 @@
 import React from 'react'
-import {default as api} from '../store/apiSlice';
+//import {default as api} from '../store/apiSlice';
+import { apiSlice } from '../store/apiSlice';
 
 export default function Labels() {
 
-   const { data, isFetching, isSuccess, isError } = api.useGetLabelsQuery()
+   const { data, isFetching, isSuccess, isError } = apiSlice.useGetLabelsQuery()
    let Transactions;
 
    if(isFetching){

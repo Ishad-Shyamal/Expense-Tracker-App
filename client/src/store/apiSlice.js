@@ -8,13 +8,15 @@ export const apiSlice = createApi({
         //get categories
         getCategories : builder.query({
             // get:'http://localhost:8080/api/categories'
-            query: () => 'api/categories'
+            query: () => '/api/categories',
+            providesTags: ['categories']
         }),
 
         //get labels
         getLabels : builder.query({
             //get:'http://localhost:8080/api/labels'
-            query : () => '/api/labels'
+            query : () => '/api/labels',
+            providesTags: ['transaction']
         }),
 
         //add new Transaction
@@ -24,7 +26,8 @@ export const apiSlice = createApi({
                 url: '/api/transaction',
                 method: "POST",
                 body: initialTransaction
-            })
+            }),
+            invalidatesTags: ['transaction']
         }),
         //delete record
         deleteTransaction : builder.mutation({
@@ -33,7 +36,8 @@ export const apiSlice = createApi({
                 url:'/api/transaction',
                 method: 'DELETE',
                 body: recordid
-            })
+            }),
+            invalidatesTags:['transaction']
         })
     })
 })

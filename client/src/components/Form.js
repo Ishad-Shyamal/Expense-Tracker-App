@@ -1,13 +1,18 @@
 import React from 'react'
 import {useForm} from 'react-hook-form'
 import List from './List'
+import { default as api } from '../store/apiSlice'
 
 export default function Form() {
 
     const{register, handleSubmit, resetField} = useForm();
+    const [addTransaction] = api.useAddTransactionMutation()
 
-    const onSubmit = (data) => {
-        console.log(data)
+    const onSubmit = async (data) => {
+        if(!data) return {};
+        await addTransaction(data).unwrap();
+        resetField('name');
+        resetField('amount')
     }
 
   return (
@@ -22,9 +27,9 @@ export default function Form() {
 
                 <select className='form-input'{...register('type')}>
                     <option value='transactiontype' defaultValue>Select an Transaction Type</option>
-                    <option value='investment' >Investment</option>
-                    <option value='expense' >Expense</option>
-                    <option value='savings' >Savings</option>
+                    <option value='Investment' >Investment</option>
+                    <option value='Expense' >Expense</option>
+                    <option value='Savings' >Savings</option>
                 </select>
 
                 <div className='input-group'>
